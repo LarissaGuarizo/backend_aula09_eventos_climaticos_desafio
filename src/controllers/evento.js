@@ -74,12 +74,32 @@ const excluirEvento = (req, res) => {
         res.status(400).json({ error: 'Erro ao excluir usuário', details: 'Informe id como parametro'})
             }       
 }           
+const resumo = (req, res) => {
+    const query = 'SELECT * FROM evento;';
 
+    con.query(query, (err, results) => {
+        if (err) {
+            return res.status(500).json({ error: 'Erro no banco de dados' });
+        }
+        if (results.length === 0) {
+            return res.json({ eventos: [], mediaTemperatura: 0 });
+        }
+
+        const soma = results.reduce((acc, evento) => acc + Number(evento.temperaturaMaxima), 0);
+        const media = soma / results.length;
+        
+        res.json({
+            eventos: results,
+            mediaTemperatura: Number(media.toFixed(2))
+        });
+    });
+};
 
 
 module.exports = {
     cadastrarEvento,
     listarEvento,
     alterarEvento,
-    excluirEvento
+    excluirEvento,
+    resumo
 }

@@ -78,10 +78,39 @@ const excluir = (req, res) => {
         res.status(400).json({ error: 'Erro ao excluir usuário', details: 'Informe o email como parametro' });
     }       
 };
+const login = (req, res) => {
+    
+    const { email, senha } = req.body;
+
+    try {
+       
+        const query = 'SELECT nome, email FROM usuario WHERE email = ? AND senha = ?;';
+
+        con.query(query, [email, senha], (err, results) => {
+            if (err) {
+                console.error(err);
+                return res.status(500).json({ error: 'Erro no banco de dados' });
+            }
+
+            
+            if (results.length === 0) {
+                return res.status(404).json({ error: 'Usuário ou senha incorretos' });
+            }
+            res.json({
+                message: 'Login realizado com sucesso!',
+                user: results[0]
+            });
+        });
+    } catch (error) {
+        console.error(error);
+        res.status(400).json({ error: 'Erro ao processar o login' });
+    }
+};
 
 module.exports = {
     cadastrar,
     listar,
     alterar,
-    excluir
+    excluir,
+    login
 }
