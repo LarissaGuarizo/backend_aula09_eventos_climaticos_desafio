@@ -1,5 +1,16 @@
 # backend_aula09_eventos_climaticos_desafio
-<<<<<<< HEAD
 
-=======
->>>>>>> 260f61cdbd73ea630d5d85ea2650b1bb53e5d96e
+## Testes alterar/excluir prints
+
+- Alterar evento
+![eventos-alterar](./eventos-alterar.png)
+
+- Excluir evento 
+![eventos-excluir](./eventos-excluir.png)
+
+- Alterar usuário
+![usuario-alterar](./usuario-alterar.png)
+
+- Excluir usuário
+![usuario-excluir](./usuario-excluir.png)
+
