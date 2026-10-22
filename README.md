@@ -1,5 +1,16 @@
 # backend_aula09_eventos_climaticos_desafio
 
+## Tecnologias
+- VS Code
+- Mysql
+- Node.js
+- Express
+
+# Descrição 
+
+![mer_der_conceitual](./docs/mer_der_conceitual.png)
+![uml_dc.png](./docs/uml_dc.png)
+
 ## Testes alterar/excluir prints
 
 - Alterar evento
